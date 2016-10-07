@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Clipboard,
   StyleSheet,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -99,8 +99,8 @@ export default class Bubble extends React.Component {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
         <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious()]}>
-          <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
+          <TouchableOpacity
+            onPress={this.onLongPress}
             accessibilityTraits="text"
             {...this.props.touchableProps}
           >
@@ -110,7 +110,7 @@ export default class Bubble extends React.Component {
               {this.renderMessageText()}
               {this.renderTime()}
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableOpacity>
         </View>
       </View>
     );

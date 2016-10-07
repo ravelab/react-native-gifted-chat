@@ -9,6 +9,7 @@ export default class Composer extends React.Component {
   render() {
     return (
       <TextInput
+        ref={(c) => this._input = c}
         placeholder={this.props.placeholder}
         placeholderTextColor={this.props.placeholderTextColor}
         multiline={this.props.multiline}
