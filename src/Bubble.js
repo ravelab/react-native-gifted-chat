@@ -9,10 +9,17 @@ import {
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
 import Time from './Time';
+import AnimatedHeart from './AnimatedHeart'
+
+let startCount = 0
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 export default class Bubble extends React.Component {
   constructor(props) {
     super(props);
+    this.onPress = this.onPress.bind(this);
     this.onLongPress = this.onLongPress.bind(this);
   }
 
@@ -70,6 +77,12 @@ export default class Bubble extends React.Component {
     return null;
   }
 
+  onPress() {
+    if (this.props.onPress) {
+      this.props.onPress(this.props.currentMessage);
+    }
+  }
+
   onLongPress() {
     if (this.props.onLongPress) {
       this.props.onLongPress(this.context);
@@ -95,12 +108,24 @@ export default class Bubble extends React.Component {
     }
   }
 
+  renderAnimatedHearts() {
+    if (this.props.currentMessage.likes !== this.currentLikes) {
+      this.currentLikes = this.props.currentMessage.likes
+      return (
+          <AnimatedHeart
+            key={startCount += 1}
+            style={{bottom: getRandomNumber(15, 35)}}
+          />
+      )
+    }
+  }
+
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
         <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious()]}>
           <TouchableOpacity
-            onPress={this.onLongPress}
+            onPress={this.onPress}
             onLongPress={this.onLongPress}
             accessibilityTraits="text"
             {...this.props.touchableProps}
@@ -110,6 +135,7 @@ export default class Bubble extends React.Component {
               {this.renderMessageImage()}
               {this.renderMessageText()}
               {this.renderTime()}
+              {this.renderAnimatedHearts()}
             </View>
           </TouchableOpacity>
         </View>
@@ -127,7 +153,7 @@ const styles = {
     wrapper: {
       borderRadius: 15,
       backgroundColor: '#f0f0f0',
-      marginRight: 60,
+      marginRight: 10,
       minHeight: 20,
       justifyContent: 'flex-end',
     },
@@ -146,7 +172,7 @@ const styles = {
     wrapper: {
       borderRadius: 15,
       backgroundColor: '#0084ff',
-      marginLeft: 60,
+      marginLeft: 10,
       minHeight: 20,
       justifyContent: 'flex-end',
     },

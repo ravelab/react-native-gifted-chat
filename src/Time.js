@@ -22,11 +22,11 @@ export default class Time extends React.Component {
 const containerStyle = {
   marginLeft: 10,
   marginRight: 10,
-  marginBottom: 5,
+  marginBottom: 1,
 };
 
 const textStyle = {
-  fontSize: 10,
+  fontSize: 9,
   backgroundColor: 'transparent',
   textAlign: 'right',
 };

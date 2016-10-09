@@ -42,7 +42,7 @@ export default class Avatar extends React.Component {
 const styles = {
   left: StyleSheet.create({
     container: {
-      marginRight: 8,
+      marginRight: 0,
     },
     image: {
       height: 36,
@@ -52,7 +52,7 @@ const styles = {
   }),
   right: StyleSheet.create({
     container: {
-      marginLeft: 8,
+      marginLeft: 0,
     },
     image: {
       height: 36,
