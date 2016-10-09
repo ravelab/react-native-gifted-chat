@@ -59,7 +59,7 @@ export default class MessageText extends React.Component {
             {type: 'email', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onEmailPress},
           ]}
         >
-          {this.props.currentMessage.text + ' ' + '💖'.repeat(this.props.currentMessage.likes)}
+          {this.props.currentMessage.text}
         </ParsedText>
       </View>
     );
