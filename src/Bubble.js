@@ -109,8 +109,9 @@ export default class Bubble extends React.Component {
   }
 
   renderAnimatedHearts() {
-    if (this.props.currentMessage.likes !== this.currentLikes) {
-      this.currentLikes = this.props.currentMessage.likes
+    let likes = this.props.currentMessage.likes || 0
+    if (likes > 0 && likes !== this.currentLikes) {
+      this.currentLikes = likes
       return (
           <AnimatedHeart
             key={startCount += 1}
