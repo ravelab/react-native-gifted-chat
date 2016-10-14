@@ -111,6 +111,7 @@ class GiftedChat extends React.Component {
 
   componentWillReceiveProps(nextProps = {}) {
     this.initMessages(nextProps.messages);
+    //for replying message
     if (nextProps.inputText !== this.props.inputText) {
       this.setState({
         text: nextProps.inputText + this.state.text

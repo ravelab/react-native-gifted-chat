@@ -54,7 +54,7 @@ var AnimatedHeart = React.createClass({
   },
   componentDidMount: function() {
     Animated.timing(this.state.position, {
-      duration: 2000,
+      duration: 3000,
       toValue: ANIMATION_END_X
     }).start(this.props.onComplete);
   },

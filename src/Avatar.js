@@ -46,7 +46,7 @@ const styles = {
     },
     image: {
       height: 36,
-      width: 42,
+      width: 52,
       borderRadius: 18,
     },
   }),
@@ -56,7 +56,7 @@ const styles = {
     },
     image: {
       height: 36,
-      width: 36,
+      width: 52,
       borderRadius: 18,
     },
   }),
