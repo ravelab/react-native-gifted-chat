@@ -152,17 +152,17 @@ const styles = {
       alignItems: 'flex-start',
     },
     wrapper: {
-      borderRadius: 10,
+      borderRadius: 7,
       backgroundColor: '#f0f0f0',
       marginRight: 10,
       minHeight: 20,
       justifyContent: 'flex-end',
     },
     containerToNext: {
-      borderBottomLeftRadius: 1,
+      borderBottomLeftRadius: 0,
     },
     containerToPrevious: {
-      borderTopLeftRadius: 1,
+      borderTopLeftRadius: 0,
     },
   }),
   right: StyleSheet.create({
