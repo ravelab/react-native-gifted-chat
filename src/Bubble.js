@@ -124,7 +124,7 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
-        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious()]}>
+        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious(), {backgroundColor: this.props.currentMessage.bubbleColor || '#f0f0f0'}]}>
           <TouchableOpacity
             onPress={this.onPress}
             onLongPress={this.onLongPress}
