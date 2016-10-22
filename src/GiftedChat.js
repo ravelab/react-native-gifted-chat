@@ -114,7 +114,7 @@ class GiftedChat extends React.Component {
     //for replying message
     if (nextProps.inputText !== this.props.inputText) {
       this.setState({
-        text: nextProps.inputText + this.state.text
+        text: nextProps.inputText
       })
     }
   }
@@ -168,6 +168,9 @@ class GiftedChat extends React.Component {
   }
 
   getBottomOffset() {
+    if (Platform.OS === 'android') {
+      return this._keyboardHeight //for working with adjustPan
+    }
     return this._bottomOffset;
   }
 
@@ -216,6 +219,9 @@ class GiftedChat extends React.Component {
     this.setKeyboardHeight(e.endCoordinates ? e.endCoordinates.height : e.end.height);
     this.setBottomOffset(this.props.bottomOffset);
     const newMessagesContainerHeight = (this.getMaxHeight() - (this.state.composerHeight + (this.getMinInputToolbarHeight() - MIN_COMPOSER_HEIGHT))) - this.getKeyboardHeight() + this.getBottomOffset();
+    if (this.props.onKeyboardHeightChange) {
+      this.props.onKeyboardHeightChange(this.getKeyboardHeight())
+    }
     if (this.props.isAnimated === true) {
       Animated.timing(this.state.messagesContainerHeight, {
         toValue: newMessagesContainerHeight,
@@ -235,6 +241,9 @@ class GiftedChat extends React.Component {
     this.setKeyboardHeight(0);
     this.setBottomOffset(0);
     const newMessagesContainerHeight = this.getMaxHeight() - (this.state.composerHeight + (this.getMinInputToolbarHeight() - MIN_COMPOSER_HEIGHT));
+    if (this.props.onKeyboardHeightChange) {
+      this.props.onKeyboardHeightChange(this.getKeyboardHeight())
+    }
     if (this.props.isAnimated === true) {
       Animated.timing(this.state.messagesContainerHeight, {
         toValue: newMessagesContainerHeight,
@@ -372,6 +381,10 @@ class GiftedChat extends React.Component {
         messagesContainerHeight: this.prepareMessagesContainerHeight(newMessagesContainerHeight),
       };
     });
+
+    if (this.props.onType) {
+      this.props.onType(newText)
+    }
   }
 
   renderInputToolbar() {

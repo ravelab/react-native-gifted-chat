@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
   container: {
   },
   image: {
-    width: 150,
-    height: 100,
-    borderRadius: 13,
+    width: 200,
+    height: 120,
+    borderRadius: 0,
     margin: 3,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
 });
 
